@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleAppWallet", "TestConsoleAppWallet\TestConsoleAppWallet.csproj", "{24C77C13-810C-4B84-B90C-3DE25086B30F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24C77C13-810C-4B84-B90C-3DE25086B30F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24C77C13-810C-4B84-B90C-3DE25086B30F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24C77C13-810C-4B84-B90C-3DE25086B30F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24C77C13-810C-4B84-B90C-3DE25086B30F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFE3616F-B7E0-42BD-B02E-54D40A4E358A}
+	EndGlobalSection
+EndGlobal
