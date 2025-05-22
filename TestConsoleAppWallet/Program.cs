@@ -22,7 +22,7 @@ namespace TestConsoleAppWallet
                 decimal balance = await GetBalanceAsync(baseUrl, token);
                 Console.WriteLine($"Current Balance: {balance}");
 
-                var success = await DebitAsync(baseUrl, token, 100.00M, "Test Transaction");
+                var success = await DebitAsync(baseUrl, token, 100000, "Test Transaction");
                 Console.WriteLine(success ? "Transaction complete." : "Transaction failed.");
             }
             else
@@ -32,18 +32,8 @@ namespace TestConsoleAppWallet
         }
         public class LoginViewModel
         {
-            [Display(Name = "ایمیل")]
-            [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-            [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد .")]
-            [EmailAddress(ErrorMessage = "ایمیل وارد شده معتبر نمی باشد")]
             public string Email { get; set; }
-
-            [Display(Name = "کلمه عبور")]
-            [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-            [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد .")]
             public string Password { get; set; }
-
-            [Display(Name = "مرا به خاطر بسپار")]
             public bool RememberMe { get; set; }
         }
 
@@ -77,7 +67,12 @@ namespace TestConsoleAppWallet
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                var response = await client.GetAsync($"{baseUrl}/api/wallet/balance");
+
+
+                string email = "aliafshar76aa@gmail.com";
+
+                var content = new StringContent(JsonConvert.SerializeObject(email), Encoding.UTF8, "application/json");
+                var response = await client.PostAsync($"{baseUrl}/api/wallet/balance", content);
                 var json = await response.Content.ReadAsStringAsync();
 
                 if (response.IsSuccessStatusCode)
@@ -91,7 +86,7 @@ namespace TestConsoleAppWallet
             }
         }
 
-        static async Task<bool> DebitAsync(string baseUrl, string token, decimal amount, string description)
+        static async Task<bool> DebitAsync(string baseUrl, string token, int amount, string description)
         {
             using (var client = new HttpClient())
             {
@@ -100,7 +95,8 @@ namespace TestConsoleAppWallet
                 var data = new
                 {
                     amount = amount,
-                    description = description
+                    description = description,
+                    email = "aliafshar76aa@gmail.com"
                 };
 
                 var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
