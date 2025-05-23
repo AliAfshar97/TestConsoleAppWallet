@@ -96,7 +96,8 @@ namespace TestConsoleAppWallet
                 {
                     amount = amount,
                     description = description,
-                    email = "aliafshar76aa@gmail.com"
+                    email = "aliafshar76aa@gmail.com",
+                    subsystemservicesid = 2
                 };
 
                 var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
