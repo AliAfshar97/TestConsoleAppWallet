@@ -12,7 +12,7 @@ namespace TestConsoleAppWallet
     {
         static async Task Main(string[] args)
         {
-            string baseUrl = "https://localhost:7145"; // Change if different
+            string baseUrl = "http://192.168.7.101:80"; // Change if different
             string token = await GetTokenAsync(baseUrl);
 
             if (!string.IsNullOrEmpty(token))
@@ -22,7 +22,7 @@ namespace TestConsoleAppWallet
                 decimal balance = await GetBalanceAsync(baseUrl, token);
                 Console.WriteLine($"Current Balance: {balance}");
 
-                var success = await DebitAsync(baseUrl, token, 100000, "Test Transaction");
+                var success = await DebitAsync(baseUrl, token, 10000, "Test Transaction",1);
                 Console.WriteLine(success ? "Transaction complete." : "Transaction failed.");
             }
             else
@@ -44,7 +44,7 @@ namespace TestConsoleAppWallet
                 LoginViewModel requestData = new LoginViewModel()
                 {
                     Email = "aliafshar76aa@gmail.com",
-                    Password = "12345678",
+                    Password = "123456789q@",
                 };
 
                 var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
@@ -86,7 +86,7 @@ namespace TestConsoleAppWallet
             }
         }
 
-        static async Task<bool> DebitAsync(string baseUrl, string token, int amount, string description)
+        static async Task<bool> DebitAsync(string baseUrl, string token, int amount, string description, int TransactionType)
         {
             using (var client = new HttpClient())
             {
@@ -97,7 +97,8 @@ namespace TestConsoleAppWallet
                     amount = amount,
                     description = description,
                     email = "aliafshar76aa@gmail.com",
-                    subsystemservicesid = 2
+                    subsystemservicesid = 2,
+                    TransactionType = TransactionType,
                 };
 
                 var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
