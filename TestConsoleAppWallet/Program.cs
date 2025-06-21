@@ -12,7 +12,7 @@ namespace TestConsoleAppWallet
     {
         static async Task Main(string[] args)
         {
-            string baseUrl = "https://localhost:7145"; // Change if different
+            string baseUrl = "http://localhost:7145"; // Change if different
             string token = await GetTokenAsync(baseUrl);
 
             if (!string.IsNullOrEmpty(token))
@@ -44,7 +44,7 @@ namespace TestConsoleAppWallet
                 LoginViewModel requestData = new LoginViewModel()
                 {
                     Email = "aliafshar76aa@gmail.com",
-                    Password = "12345678",
+                    Password = "123456789q@",
                 };
 
                 var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
@@ -94,10 +94,10 @@ namespace TestConsoleAppWallet
 
                 var data = new
                 {
-                    amount = amount,
                     description = description,
                     email = "aliafshar76aa@gmail.com",
-                    subsystemservicesid = 2
+                    subsystemservicesid = 2,
+                    TransactionType = 2,
                 };
 
                 var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
